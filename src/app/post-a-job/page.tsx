@@ -29,6 +29,8 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { JOBTYPES } from "@/constans";
 import InputSkills from "@/components/organisms/InputSkills";
 import CKEditor from "@/components/organisms/CKEditor";
+import InputBenefits from "@/components/organisms/InputBenefits";
+import { Button } from "@/components/ui/button";
 
 interface PostJobPageProps {}
 
@@ -250,6 +252,14 @@ const PostJobPage: FC<PostJobPageProps> = ({}) => {
               editorLoaded={editorLoaded}
             />
           </FieldInput>
+          <hr />
+          <FieldInput title="Perks and Benefit" subtitle="Encourge more people to apply by sharing">
+              <InputBenefits form={form} />
+          </FieldInput>
+
+          <div className="flex justify-end">
+              <Button size='lg'>Do a Review</Button>
+          </div>
         </form>
       </Form>
     </div>

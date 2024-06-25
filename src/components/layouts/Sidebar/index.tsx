@@ -1,15 +1,34 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
-import React, { FC } from "react";
+import { useRouter } from "next/navigation";
+import React, { FC, useState } from "react";
 import { FaUsersViewfinder } from "react-icons/fa6";
 import { HiOutlineBuildingOffice } from "react-icons/hi2";
 import { IoHomeOutline, IoLogOutOutline } from "react-icons/io5";
-import { MdOutlineDisplaySettings, MdOutlineDocumentScanner } from "react-icons/md";
+import {
+  MdOutlineDisplaySettings,
+  MdOutlineDocumentScanner,
+} from "react-icons/md";
 import { SlCalender } from "react-icons/sl";
 import { TiMessageTyping } from "react-icons/ti";
 
 interface SidebarProps {}
 
 const Sidebar: FC<SidebarProps> = ({}) => {
+  const router = useRouter();
+
+  const [activeButton, setActiveButton] = useState<string | null>(null);
+
+  const handleButtonClick = (buttonName: string) => {
+    setActiveButton(buttonName);
+    if (buttonName === "Job Listings") {
+      router.push("/job-listings");
+    } else if (buttonName === "Home") {
+      router.push("/");
+    }
+  };
+
   return (
     <div className="pb-12 min-h-screen">
       <div className="space-y-3 py-3">
@@ -18,7 +37,10 @@ const Sidebar: FC<SidebarProps> = ({}) => {
           <div className="space-y-3">
             <Button
               variant={"ghost"}
-              className="w-full justify-start rounded-none hover:text-primary"
+              className={`w-full justify-start rounded-none hover:text-primary ${
+                activeButton === "Home" ? "bg-blue-100 text-primary" : ""
+              }`}
+              onClick={() => handleButtonClick("Home")}
             >
               <IoHomeOutline className="mr-2 text-lg" />
               Home
@@ -46,7 +68,10 @@ const Sidebar: FC<SidebarProps> = ({}) => {
             </Button>
             <Button
               variant={"ghost"}
-              className="w-full justify-start rounded-none hover:text-primary"
+              className={`w-full justify-start rounded-none hover:text-primary ${
+                activeButton === "Job Listings" ? "bg-blue-100 text-primary rounded-none" : ""
+              }`}
+              onClick={() => handleButtonClick("Job Listings")}
             >
               <MdOutlineDocumentScanner className="mr-2 text-lg" />
               Job Listings

@@ -16,16 +16,16 @@ export const jobFormSchema = z.object({
     .nonempty({ message: "Isi Skill Pekerjaan Anda" }),
   jobDescription: z
     .string({ required_error: "Job Description Harus Di Isi" })
-    .min(10, { message: "Tidak Boleh Kuran Dari 10 Karakter" }),
+    .min(10, { message: "JobDescription Tidak Boleh Kurang Dari 10 Karakter" }),
   responsibilty: z
     .string({ required_error: "Job Description Harus Di Isi" })
-    .min(10, { message: "Tidak Boleh Kuran Dari 10 Karakter" }),
+    .min(10, { message: "Responsibilty Tidak Boleh Kurang Dari 10 Karakter" }),
   whoYouAre: z
     .string({ required_error: "Job Description Harus Di Isi" })
-    .min(10, { message: "Tidak Boleh Kuran Dari 10 Karakter" }),
+    .min(10, { message: " WhoYouAre Tidak Boleh Kurang Dari 10 Karakter" }),
   niceToHaves: z
     .string({ required_error: "Job Description Harus Di Isi" })
-    .min(10, { message: "Tidak Boleh Kuran Dari 10 Karakter" }),
+    .min(10, { message: "NiceToHaves Tidak Boleh Kurang Dari 10 Karakter" }),
   benefits: z
     .object({
       benefit: z.string(),
