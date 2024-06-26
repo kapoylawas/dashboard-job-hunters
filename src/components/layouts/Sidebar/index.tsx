@@ -26,6 +26,8 @@ const Sidebar: FC<SidebarProps> = ({}) => {
       router.push("/job-listings");
     } else if (buttonName === "Home") {
       router.push("/");
+    } else if (buttonName === "Settings") {
+      router.push("/settings");
     }
   };
 
@@ -69,7 +71,9 @@ const Sidebar: FC<SidebarProps> = ({}) => {
             <Button
               variant={"ghost"}
               className={`w-full justify-start rounded-none hover:text-primary ${
-                activeButton === "Job Listings" ? "bg-blue-100 text-primary rounded-none" : ""
+                activeButton === "Job Listings"
+                  ? "bg-blue-100 text-primary rounded-none"
+                  : ""
               }`}
               onClick={() => handleButtonClick("Job Listings")}
             >
@@ -90,7 +94,10 @@ const Sidebar: FC<SidebarProps> = ({}) => {
             <h2 className="mb-1 px-4 text-lg font-semibold">Settings</h2>
             <Button
               variant={"ghost"}
-              className="w-full justify-start rounded-none hover:text-primary"
+              className={`w-full justify-start rounded-none hover:text-primary ${
+                activeButton === "Settings" ? "bg-blue-100 text-primary" : ""
+              }`}
+              onClick={() => handleButtonClick("Settings")}
             >
               <MdOutlineDisplaySettings className="mr-2 text-lg" />
               Settings
