@@ -253,12 +253,15 @@ const PostJobPage: FC<PostJobPageProps> = ({}) => {
             />
           </FieldInput>
           <hr />
-          <FieldInput title="Perks and Benefit" subtitle="Encourge more people to apply by sharing">
-              <InputBenefits form={form} />
+          <FieldInput
+            title="Perks and Benefit"
+            subtitle="Encourge more people to apply by sharing"
+          >
+            <InputBenefits form={form} />
           </FieldInput>
 
           <div className="flex justify-end">
-              <Button size='lg'>Do a Review</Button>
+            <Button size="lg">Do a Review</Button>
           </div>
         </form>
       </Form>
