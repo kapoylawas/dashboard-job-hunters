@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC } from "react";
 import {
   Table,
   TableBody,
@@ -10,12 +10,12 @@ import {
 } from "@/components/ui/table";
 import { JOB_LISTING_COLUMNS, JOB_LISTING_DATA } from "@/constans";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { MoreVertical } from "lucide-react";
+import ButtonActionTable from "@/components/organisms/ButtonActionTable";
 
-interface JobListingsPagePageProps {}
+interface JobListingsPageProps {}
 
-const JobListingsPage: FC<JobListingsPagePageProps> = ({}) => {
+const JobListingsPage: FC<JobListingsPageProps> = ({}) => {
+
   return (
     <div>
       <div className="font-semibold text-3xl">Job Listing</div>
@@ -47,9 +47,7 @@ const JobListingsPage: FC<JobListingsPagePageProps> = ({}) => {
                   {item.applicants} / {item.needs}
                 </TableCell>
                 <TableCell>
-                  <Button size='icon' variant="outline">
-                    <MoreVertical className="w-4 h-4"/>
-                  </Button>
+                  <ButtonActionTable url="/job-detail/1" />
                 </TableCell>
               </TableRow>
             ))}
