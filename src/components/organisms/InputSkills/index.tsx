@@ -8,11 +8,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { jobFormSchema } from "@/lib/form-schema";
 import { PlusIcon } from "lucide-react";
 import { FC, useRef, useState } from "react";
-import { UseFormReturn } from "react-hook-form";
-import { z } from "zod";
+
 
 interface InputSkillsProps {
   form: any;
