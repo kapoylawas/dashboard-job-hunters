@@ -36,13 +36,18 @@ export const jobFormSchema = z.object({
 });
 
 export const overviewFormSchema = z.object({
-  image: z.any().refine((item: any) => item?.name, { message: "image harus di isi" }),
+  image: z
+    .any()
+    .refine((item: any) => item?.name, { message: "image harus di isi" }),
   name: z.string({ required_error: "Name harus di isi" }),
   website: z.string({ required_error: "Website harus di isi" }),
   location: z.string({ required_error: "Location harus di isi" }),
   employe: z.string({ required_error: "Employe harus di isi" }),
   industry: z.string({ required_error: "Industry harus di isi" }),
-  dateFounded: z.string({ required_error: "Date founded harus di isi" }),
-  techStack: z.string().array().nonempty({ message: "Tech stack must be at least 1 data" }),
+  dateFounded: z.date({ required_error: "Date founded harus di isi" }),
+  techStack: z
+    .string({required_error: "Tech stack harus di isi"})
+    .array()
+    .nonempty({ message: "Tech stack must be at least 1 data" }),
   description: z.string({ required_error: "Description stack harus di isi" }),
-})
+});
