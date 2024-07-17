@@ -46,7 +46,7 @@ export const overviewFormSchema = z.object({
   industry: z.string({ required_error: "Industry harus di isi" }),
   dateFounded: z.date({ required_error: "Date founded harus di isi" }),
   techStack: z
-    .string({required_error: "Tech stack harus di isi"})
+    .string({ required_error: "Tech stack harus di isi" })
     .array()
     .nonempty({ message: "Tech stack must be at least 1 data" }),
   description: z.string({ required_error: "Description stack harus di isi" }),
