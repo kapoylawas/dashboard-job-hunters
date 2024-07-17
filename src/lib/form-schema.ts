@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { JOBTYPES } from "../constans/index";
+import SocialMediaForm from '@/components/forms/SosisalMediaForm';
 
 export const jobFormSchema = z.object({
   roles: z
@@ -51,3 +52,11 @@ export const overviewFormSchema = z.object({
     .nonempty({ message: "Tech stack must be at least 1 data" }),
   description: z.string({ required_error: "Description stack harus di isi" }),
 });
+
+export const socialMediaFormSchema = z.object({
+  facebook: z.string({required_error: 'Facebook link is  required'}),
+  instagram: z.string({required_error: 'Instagram link is  required'}),
+  linkedin: z.string({required_error: 'Linkedin link is  required'}),
+  twitter: z.string({required_error: 'Twitter link is  required'}),
+  youtube: z.string({required_error: 'Youtube link is  required'}),
+})
