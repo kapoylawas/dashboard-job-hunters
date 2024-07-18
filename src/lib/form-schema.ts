@@ -1,6 +1,5 @@
 import { z } from "zod";
 import { JOBTYPES } from "../constans/index";
-import SocialMediaForm from '@/components/forms/SosisalMediaForm';
 
 export const jobFormSchema = z.object({
   roles: z
