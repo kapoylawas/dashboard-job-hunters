@@ -12,19 +12,40 @@ import { Input } from "@/components/ui/input";
 import { signUpFormSchema } from "@/lib/form-schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
-import React, { FC } from "react";
+import { useRouter } from "next/navigation";
+import React, { FC, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { useToast } from "@/components/ui/use-toast";
 
-interface SignupPageProps {}
+interface SignUpPageProps {}
 
-const SignupPage: FC<SignupPageProps> = ({}) => {
+const SignUpPage: FC<SignUpPageProps> = ({}) => {
   const form = useForm<z.infer<typeof signUpFormSchema>>({
     resolver: zodResolver(signUpFormSchema),
   });
 
-  const onSubmit = (val: z.infer<typeof signUpFormSchema>) => {
-    console.log(val);
+  const router = useRouter();
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const onSubmit = async (val: z.infer<typeof signUpFormSchema>) => {
+    setIsSubmitting(true);
+    try {
+      await fetch("/api/company/new-user", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(val),
+      });
+      await router.push("/auth/signin");
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Please Try Again",
+      });
+      console.log(error);
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -82,7 +103,10 @@ const SignupPage: FC<SignupPageProps> = ({}) => {
                 )}
               />
 
-              <Button className=" w-full">Sign Up</Button>
+              <Button className=" w-full" disabled={isSubmitting}>
+                {isSubmitting ? "Loading..." : "Sign Up"}
+              </Button>
+
               <div className="text-sm">
                 Already have an account{" "}
                 <Link href="/auth/signin" className="text-primary">
@@ -97,4 +121,4 @@ const SignupPage: FC<SignupPageProps> = ({}) => {
   );
 };
 
-export default SignupPage;
+export default SignUpPage;
