@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import React, { FC, useState } from "react";
 import { FaUsersViewfinder } from "react-icons/fa6";
@@ -105,6 +106,7 @@ const Sidebar: FC<SidebarProps> = ({}) => {
             <Button
               variant={"ghost"}
               className="w-full justify-start rounded-none text-red-500 hover:bg-red-200 hover:text-red-500"
+              onClick={() => signOut()}
             >
               <IoLogOutOutline className="mr-2 text-lg" />
               Logout
